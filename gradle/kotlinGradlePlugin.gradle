@@ -21,10 +21,18 @@ project.buildscript.repositories {
 project.buildscript.dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 }
+
+// TODO: Remove after compiler update
+project.buildscript {
+    repositories.mavenLocal()
+    configurations.classpath.resolutionStrategy.force("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4-pub-000")
+}
+
 configurations {
     kotlinCompilerClasspath
 }
 project.repositories {
+    mavenLocal()
     maven {
         url kotlinCompilerRepo
     }
